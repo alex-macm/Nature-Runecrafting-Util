@@ -90,7 +90,6 @@ public class NatureRCUtilPlugin extends Plugin
 				if (invTab == 4) {
 					Widget equipCloak = client.getWidget(InterfaceID.EQUIPMENT, 16); //Cloak slot seems to be 16
 					childWidgetItemID = equipCloak.getChild(1).getItemId(); //This child has ItemID others are -1
-					String widgetItemName = equipCloak.getName(); //For debug purposes
 				}
 
 				int teleportIdx = -1;

@@ -31,6 +31,8 @@ import com.google.inject.Provides;
 import javax.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.Client;
+import net.runelite.api.widgets.InterfaceID;
+import net.runelite.api.widgets.Widget;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
 import net.runelite.client.plugins.Plugin;
@@ -72,7 +74,7 @@ public class NatureRCUtilPlugin extends Plugin
 	public void onPostMenuSort(PostMenuSort event) {
 		WorldPoint playerLoc = client.getLocalPlayer().getWorldLocation();
 		if (9547 == playerLoc.getRegionID()) {
-			String teleportString = "Jarr";
+			String teleportString = "Desert"; //Changed by Jagex since submenu on achieve cape
 			if (config.sirRebral()){
 				teleportString = "Sir Rebral";
 			}
@@ -80,10 +82,19 @@ public class NatureRCUtilPlugin extends Plugin
 			Menu menu = client.getMenu();
 			MenuEntry[] menuEntries = menu.getMenuEntries();
 			if (menuEntries.length > 2) {
+				//For Inv
 				int cape = menuEntries[menuEntries.length - 2].getItemId();
+				//For Worn
+				int invTab = client.getVarcIntValue(VarClientInt.INVENTORY_TAB); //3 is inv, 4 is equipment visible
+				int childWidgetItemID = 0;
+				if (invTab == 4) {
+					Widget equipCloak = client.getWidget(InterfaceID.EQUIPMENT, 16); //Cloak slot seems to be 16
+					childWidgetItemID = equipCloak.getChild(1).getItemId(); //This child has ItemID others are -1
+				}
+
 				int teleportIdx = -1;
 				int jarrIdx = -1;
-				if (ArrayUtils.contains(capes, cape)) {
+				if (ArrayUtils.contains(capes, cape) || ArrayUtils.contains(capes, childWidgetItemID)) { //Checks both Inv OR Worn for achievement cape IDs
 					teleportIdx = getIndexOfNameFromMenu(menu, "Teleport");
 					if (teleportIdx == -1) {
 						return;
@@ -101,7 +112,11 @@ public class NatureRCUtilPlugin extends Plugin
 						client.getMenu().createMenuEntry(-1)
 								.setOption(jarr.getOption())
 								.setTarget(jarr.getTarget())
-								.onClick(jarr.onClick())
+								.setType(jarr.getType())
+								.setIdentifier(jarr.getIdentifier())
+								.setItemId(jarr.getItemId())
+								.setParam0(jarr.getParam0())
+								.setParam1(jarr.getParam1())
 								.setDeprioritized(false);
 					}
 				}

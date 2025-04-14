@@ -73,7 +73,6 @@ public class NatureRCUtilPlugin extends Plugin
 	@Subscribe(priority = -1)
 	public void onPostMenuSort(PostMenuSort event) {
 		WorldPoint playerLoc = client.getLocalPlayer().getWorldLocation();
-		log.info("Current location:" + playerLoc.getRegionID());
 		if (9547 == playerLoc.getRegionID() || (7228 ==playerLoc.getRegionID() && config.soulAltar())) { //9547 Nature Altar, 7228 Soul Altar
 			String teleportString = "Desert"; //Changed by Jagex since submenu on achieve cape
 			if (config.sirRebral()){

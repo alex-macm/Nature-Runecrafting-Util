@@ -52,4 +52,13 @@ public interface NatureRCUtilConfig extends Config
     default boolean soulAltar(){
         return false;
     }
+    @ConfigItem(
+            keyName = "abyss",
+            name = "Abyss",
+            description = "Tele to Wilderness line from Jarr",
+            position = 2
+    )
+    default boolean abyss(){
+        return false;
+    }
 }

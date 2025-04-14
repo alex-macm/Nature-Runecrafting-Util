@@ -73,10 +73,13 @@ public class NatureRCUtilPlugin extends Plugin
 	@Subscribe(priority = -1)
 	public void onPostMenuSort(PostMenuSort event) {
 		WorldPoint playerLoc = client.getLocalPlayer().getWorldLocation();
-		if (9547 == playerLoc.getRegionID() || (7228 ==playerLoc.getRegionID() && config.soulAltar())) { //9547 Nature Altar, 7228 Soul Altar
+		if (9547 == playerLoc.getRegionID() || (7228 == playerLoc.getRegionID() && config.soulAltar()) || (13104 == playerLoc.getRegionID()) && config.abyss()) { //9547 Nature Altar, 7228 Soul Altar
 			String teleportString = "Desert"; //Changed by Jagex since submenu on achieve cape
 			if (config.sirRebral()){
 				teleportString = "Sir Rebral";
+			}
+			if (config.abyss() && 13104 == playerLoc.getRegionID()){
+				teleportString = "Wilderness";
 			}
 
 			Menu menu = client.getMenu();

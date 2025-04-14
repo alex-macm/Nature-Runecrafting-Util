@@ -43,4 +43,13 @@ public interface NatureRCUtilConfig extends Config
     default boolean sirRebral(){
         return false;
     }
+    @ConfigItem(
+            keyName = "soulAltar",
+            name = "Soul Altar",
+            description = "Tele from Soul Altar",
+            position = 1
+    )
+    default boolean soulAltar(){
+        return false;
+    }
 }

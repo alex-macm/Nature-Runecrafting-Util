@@ -102,6 +102,7 @@ public class NatureRCUtilPlugin extends Plugin
 					(config.abyss() && 11828 == playerLoc.getRegionID())) { //11828 sir rebral to wilderness
 				teleportString = "Wilderness";
 			}
+			
 
 			Menu menu = client.getMenu();
 			MenuEntry[] menuEntries = menu.getMenuEntries();

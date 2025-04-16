@@ -72,8 +72,26 @@ public class NatureRCUtilPlugin extends Plugin
 
 	@Subscribe(priority = -1)
 	public void onPostMenuSort(PostMenuSort event) {
-		WorldPoint playerLoc = client.getLocalPlayer().getWorldLocation();
-		if (9547 == playerLoc.getRegionID() || (7228 == playerLoc.getRegionID() && config.soulAltar()) || (13104 == playerLoc.getRegionID()) && config.abyss()) { //9547 Nature Altar, 7228 Soul Altar
+		WorldPoint playerLoc = client.getLocalPlayer().getWorldLocation(); //explv's map for chunk ids
+		if (
+				(11339 == playerLoc.getRegionID() && config.airAltar()) || //11339 Air
+				(11083 == playerLoc.getRegionID() && config.mindAltar()) || //11083 Mind
+				(10827 == playerLoc.getRegionID() && config.waterAltar()) || //10827 Water
+				(10571 == playerLoc.getRegionID() && config.earthAltar()) || //10571 Earth
+				(10315 == playerLoc.getRegionID() && config.fireAltar()) || //10315 Fire
+				(10059 == playerLoc.getRegionID() && config.bodyAltar()) || //10059 Body
+				(9803 == playerLoc.getRegionID() && config.lawAltar()) || //9803 law
+				(9547 == playerLoc.getRegionID() && config.natureAltar()) || //9547 nature
+				(9291 == playerLoc.getRegionID() && config.wrathAltar()) || //9291 wrath
+				(9035 == playerLoc.getRegionID() && config.chaosAltar()) || //9035 chaos
+				(8779 == playerLoc.getRegionID() && config.deathAltar()) || //8779 death
+				(8523 == playerLoc.getRegionID() && config.cosmicAltar()) || //8523 cosmic
+				(12875 == playerLoc.getRegionID() && config.truebloodAltar()) || //12875 true blood
+				(6715 == playerLoc.getRegionID() && config.darkbloodAltar()) || //6715 dark blood
+				(7228 == playerLoc.getRegionID() && config.darksoulAltar()) || //7228 dark soul
+				(8508 == playerLoc.getRegionID() && config.astralAltar()) || //8508 astral
+				(13104 == playerLoc.getRegionID()) && config.abyss()) { // 13104 jarr to wilderness
+
 			String teleportString = "Desert"; //Changed by Jagex since submenu on achieve cape
 			if (config.sirRebral()){
 				teleportString = "Sir Rebral";

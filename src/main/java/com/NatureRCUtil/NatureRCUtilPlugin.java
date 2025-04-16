@@ -90,13 +90,16 @@ public class NatureRCUtilPlugin extends Plugin
 				(6715 == playerLoc.getRegionID() && config.darkbloodAltar()) || //6715 dark blood
 				(7228 == playerLoc.getRegionID() && config.darksoulAltar()) || //7228 dark soul
 				(8508 == playerLoc.getRegionID() && config.astralAltar()) || //8508 astral
-				(13104 == playerLoc.getRegionID()) && config.abyss()) { // 13104 jarr to wilderness
+				(11828 == playerLoc.getRegionID() && config.abyss()) || //11828 sir rebral to wilderness
+				(13104 == playerLoc.getRegionID() && config.abyss())) { // 13104 jarr to wilderness
 
-			String teleportString = "Desert"; //Changed by Jagex since submenu on achieve cape
+			String teleportString = "Desert"; //jarr - Changed by Jagex since submenu on achieve cape
 			if (config.sirRebral()){
-				teleportString = "Sir Rebral";
+				teleportString = "Falador"; // Sir rebral - changed by jagex since submenu update
 			}
-			if (config.abyss() && 13104 == playerLoc.getRegionID()){
+			if (
+					(config.abyss() && 13104 == playerLoc.getRegionID()) || //13104 jarr to wilderness
+					(config.abyss() && 11828 == playerLoc.getRegionID())) { //11828 sir rebral to wilderness
 				teleportString = "Wilderness";
 			}
 
